@@ -1,0 +1,33 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #000000;
+  color: #fff;
+  font-family: monospace;
+}
+button {
+  padding: 5px 90px;
+  color: #fff;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+button:hover {
+  border: 1px solid #fff;
+}
+span {
+  margin: 0 0 0 32px;
+}
+.fader {
+  opacity: 1;
+  animation: fade 1s ease;
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

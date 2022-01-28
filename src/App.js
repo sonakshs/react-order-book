@@ -1,0 +1,56 @@
+import "./styles.css";
+import { useState } from "react";
+import OrderBook from "./OrderBook";
+/**
+ * https://i.ibb.co/W6GbZFR/interview-example.gif
+ * part 1
+Requirements:
+- Clicking Buy should create a new row for Bids (buys).
+- Clicking Sell should create a new row for Asks (sells).
+- For the size, generate a random number between 0 to 1.
+- For Price, generate a random number around 37000.
+---
+Example order generator object:
+{
+  id: Math.random(),
+  size: Math.random(),
+  price: 37000 + Math.random() * 2000
+}
+**/
+
+export default function App() {
+  const [arrG, setArrG] = useState([]);
+  const [arrR, setArrR] = useState([]);
+
+  const addItem = (color) => {
+    const item = {
+      id: Math.random(),
+      size: Math.random(),
+      price: 37000 + Math.random() * 2000
+    };
+    if (color === "green") setArrG((arrG) => [...arrG, item]);
+    else if (color === "red") {
+      setArrR((arrR) => [...arrR, item]);
+    }
+  };
+
+  return (
+    <div className="App">
+      <div>
+        <button
+          style={{ backgroundColor: "rgb(45,175,52)" }}
+          onClick={() => addItem("green")}
+        >
+          Buy
+        </button>
+        <button
+          style={{ backgroundColor: "rgb(250,103,45)" }}
+          onClick={() => addItem("red")}
+        >
+          Sell
+        </button>
+      </div>
+      <OrderBook arrG={arrG} arrR={arrR} />
+    </div>
+  );
+}
